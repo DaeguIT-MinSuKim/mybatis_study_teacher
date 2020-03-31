@@ -24,4 +24,9 @@ public class StudentMapperImpl implements StudentMapper {
 		return sqlSession.selectOne(namespace + ".selectStudentByNo", student);
 	}
 
+	@Override
+	public Student selectStudentByNoWithResultMap(Student student) {
+		return sqlSession.selectOne(namespace +".selectStudentByNoWithResultMap", student);
+	}
+
 }

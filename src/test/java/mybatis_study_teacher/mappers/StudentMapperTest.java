@@ -35,5 +35,13 @@ public class StudentMapperTest extends AbstractTest{
         Assert.assertEquals(student.getStudId(), selectStudent.getStudId());
     }
 
-
+    @Test
+    public void test02SelectStudentByNoWithResultMap() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        Student student = new Student();
+        student.setStudId(1);
+        Student selectStudent = dao.selectStudentByNoWithResultMap(student);
+        log.debug(selectStudent.toString());
+        Assert.assertEquals(student.getStudId(), selectStudent.getStudId());
+    }
 }
