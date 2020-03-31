@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis_study_teacher.mappers.StudentMapper">
-	<select id="selectStudentByNo" parameterType="Student" resultType="Student">
-		select stud_id as studId, name, email, dob, phone
+	<sql id="selectSql">
+		select stud_id, name, email, dob, phone
 		  from students
-		 where stud_id=#{studId}
+	</sql>
+
+	<sql id="whereSql">
+		<where>
+			<if test="studId != null">
+				stud_id = #{studId}
+			</if>
+		</where>
+	</sql>
+	<select id="selectStudentByNo" parameterType="Student" resultType="Student">
+		<include refid="selectSql"/>
+		<include refid="whereSql"/>
+<!-- 		select stud_id as studId, name, email, dob, phone
+		  from students
+		 where stud_id=#{studId} -->
 	</select>
 	
 	<resultMap type="Student" id="stdResult">
@@ -23,7 +37,6 @@
 	</select>
 	
 	<select id="selectStudentByAll" resultType="Student">
-		select stud_id as studId, name, email, dob, phone
-  		  from students;
+		<include refid="selectSql"/>
 	</select>
 </mapper>
