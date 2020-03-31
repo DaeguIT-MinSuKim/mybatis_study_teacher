@@ -21,4 +21,9 @@
                substring(phone, 9, 4) as l
   		  from students where stud_id=#{studId}
 	</select>
+	
+	<select id="selectStudentByAll" resultType="Student">
+		select stud_id as studId, name, email, dob, phone
+  		  from students;
+	</select>
 </mapper>
