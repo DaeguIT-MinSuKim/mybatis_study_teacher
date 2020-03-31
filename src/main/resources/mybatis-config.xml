@@ -4,17 +4,20 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<package name="mybatis_study_teacher.dto"/>
+		<package name="mybatis_study_teacher.dto" />
 	</typeAliases>
+	<typeHandlers>
+		<package name="mybatis_study_teacher.typehandlers" />
+	</typeHandlers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource
+				type="mybatis_study_teacher.jdbc.HikariCPFactory" />
+		</environment>
+	</environments>
 
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="mybatis_study_teacher.jdbc.HikariCPFactory"/>
-        </environment>
-    </environments>
-
-    <mappers>
-    	<package name="mybatis_study_teacher.mappers"/>
-    </mappers>
+	<mappers>
+		<package name="mybatis_study_teacher.mappers" />
+	</mappers>
 </configuration>
