@@ -60,4 +60,22 @@
 	     where stud_id=#{studId}
 	</update>
 		
+	<!-- resultmap -->
+	<resultMap id="StudentResult" type="Student">
+	    <id property="studId" column="stud_id"/>
+	    <result property="name" column="name"/>
+	    <result property="email" column="email"/>
+	    <result property="phone" column="phone"/>
+	    <result property="dob" column="dob"/>
+	</resultMap>
+	
+	<select id="selectStudentByAllForResutlMap" resultMap="StudentResult">
+		<include refid="selectSql"/>
+	</select>
+	
+	<!-- hashMap -->
+	<select id="selectStudentByAllForHashMap" resultType="map">
+	    <include refid="selectSql"/>
+	</select>
+	
 </mapper>
