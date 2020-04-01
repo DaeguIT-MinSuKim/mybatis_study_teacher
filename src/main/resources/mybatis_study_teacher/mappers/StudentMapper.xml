@@ -39,4 +39,9 @@
 	<select id="selectStudentByAll" resultType="Student">
 		<include refid="selectSql"/>
 	</select>
+	
+	<insert id="insertStudent" parameterType="Student">
+		insert into students(stud_id, name, email, phone, dob) 
+    	values(#{studId}, #{name}, #{email}, #{phone}, #{dob})
+	</insert>
 </mapper>
