@@ -42,4 +42,9 @@ public class StudentMapperImpl implements StudentMapper {
 		return sqlSession.insert(namespace + ".insertStudent", student);
 	}
 
+	@Override
+	public int deleteStudent(int id) {
+		return sqlSession.delete(namespace+".deleteStudent", id);
+	}
+
 }

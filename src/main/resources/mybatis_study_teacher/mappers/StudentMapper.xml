@@ -44,4 +44,8 @@
 		insert into students(stud_id, name, email, phone, dob) 
     	values(#{studId}, #{name}, #{email}, #{phone}, #{dob})
 	</insert>
+	
+	<delete id="deleteStudent" parameterType="int">
+		delete from students  where stud_id = #{studId}
+	</delete>
 </mapper>

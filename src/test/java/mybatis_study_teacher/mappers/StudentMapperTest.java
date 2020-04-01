@@ -67,7 +67,7 @@ public class StudentMapperTest extends AbstractTest{
     }
     
     @Test
-    public void testInsertStudent() {
+    public void test04InsertStudent() {
         Calendar newDate = GregorianCalendar.getInstance();
         newDate.set(1990, 2, 28);
         Student student = new Student();
@@ -78,6 +78,13 @@ public class StudentMapperTest extends AbstractTest{
         student.setDob(newDate.getTime());
         int res = dao.insertStudent(student);
         Assert.assertEquals(1, res);
+    }
+
+    @Test
+    public void test05DeleteStudent(){
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        int deleteStudent = dao.deleteStudent(3);
+        Assert.assertSame(1, deleteStudent);
     }
 
 }
