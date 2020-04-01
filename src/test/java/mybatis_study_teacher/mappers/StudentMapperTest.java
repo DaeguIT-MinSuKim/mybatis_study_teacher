@@ -1,6 +1,7 @@
 package mybatis_study_teacher.mappers;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -85,6 +86,26 @@ public class StudentMapperTest extends AbstractTest{
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
         int deleteStudent = dao.deleteStudent(3);
         Assert.assertSame(1, deleteStudent);
+    }
+
+    @Test
+    public void test06UpdateStudent(){
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        Student student = new Student();
+        student.setStudId(1);
+        student.setName("Timothy");
+        student.setEmail("test@test.co.kr");
+        student.setPhone(new PhoneNumber("987-654-3211"));
+        student.setDob(new Date());
+            
+        int result = dao.updateStudent(student);
+        Assert.assertSame(1, result);
+                    
+        student.setEmail("timothy@gmail.com");
+        student.setPhone(new PhoneNumber("123-123-1234"));
+        student.setDob(new GregorianCalendar(1988, 04, 25).getTime());
+        result = dao.updateStudent(student);
+        Assert.assertSame(1, result);
     }
 
 }
