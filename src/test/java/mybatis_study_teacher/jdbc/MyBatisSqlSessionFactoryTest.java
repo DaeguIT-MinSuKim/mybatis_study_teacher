@@ -15,6 +15,7 @@ public class MyBatisSqlSessionFactoryTest {
         SqlSession session = MyBatisSqlSessionFactory.openSession();
         log.trace("session " + session);
         Assert.assertNotNull(session);
+        session.close();
 	}
 
 }
