@@ -78,4 +78,15 @@
 	    <include refid="selectSql"/>
 	</select>
 	
+	<!-- 내포된 결과매핑(ResultMap)을 사용한 일대일 매핑 -->
+   <resultMap id="StudentAssociation" type="Student" extends="StudentResult">
+     <association property="address" resultMap="mybatis_study_teacher.mappers.AddressMapper.AddressResult"/>
+   </resultMap>
+    
+   <select id="selectStudentByNoAssociation" parameterType="Student" resultMap="StudentAssociation">
+	  select stud_id, name, email, phone, dob, a.addr_id, street, city, state, zip, country
+        from students s join addresses a on s.addr_id=a.addr_id
+      <include refid="whereSql"/>
+   </select>
+	
 </mapper>

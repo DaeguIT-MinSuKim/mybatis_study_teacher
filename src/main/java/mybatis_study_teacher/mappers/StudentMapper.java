@@ -21,5 +21,8 @@ public interface StudentMapper {
 	List<Student> selectStudentByAllForResutlMap();
 	//hasMap
 	List<Map<String, Object>> selectStudentByAllForHashMap();
+	
+	/* 내포된 결과매핑(ResultMap)을 사용한 일대일 매핑 */
+	Student selectStudentByNoAssociation(Student student);
 
 }
