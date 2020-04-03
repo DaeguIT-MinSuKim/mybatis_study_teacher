@@ -213,7 +213,20 @@ grant all privileges on mybatis_study.* to 'user_mybatis_study'@'%' identified b
 
 
 
+-- 열거형 컬럼 추가(gender)
+ALTER TABLE students add gender tinyint(1) unsigned;
 
 
+ALTER TABLE students add gender tinyint unsigned;
+alter table students modify gender tinyint(1) unsigned;
+
+
+CREATE TABLE user_pics (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  name varchar(50) not NULL COMMENT 'name',
+  pic longblob COMMENT 'pic',
+  bio longtext COLLATE utf8_unicode_ci COMMENT 'bio',
+  PRIMARY KEY (id)
+);
 
 
