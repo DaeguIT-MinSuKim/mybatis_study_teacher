@@ -7,6 +7,7 @@ select * from students;
 select * from tutors;
 select * from courses;
 select * from course_enrollment;
+select * from user_pics up ;
 
 -- studentMapper sql
 

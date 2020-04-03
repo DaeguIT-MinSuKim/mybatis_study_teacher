@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis_study_teacher.mappers.StudentMapper">
 	<sql id="selectSql">
-		select stud_id, name, email, dob, phone
+		select stud_id, name, email, dob, phone, gender
 		  from students
 	</sql>
 
@@ -93,4 +93,35 @@
 		insert into students(stud_id, name, email,phone, dob, gender) 
     	values(#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})
 	</insert>
+	
+	<resultMap type="Student" id="StudentGenderResult"  extends="StudentResult">
+    	<result property="gender" column="gender" />
+	</resultMap>
+	
+ 	<!-- 여러 개의 입력 파라미터 전달 -->
+ 	<sql id="where_name_email">
+		<where>
+	        <if test="name != null">
+	            name = #{name}
+	        </if>
+	        <if test="email != null">
+	            AND email = #{email}
+	        </if>
+	    </where>
+ 	</sql>
+ 	<select id="selectStudentByMap" parameterType="map" resultMap="StudentGenderResult">
+		<include refid="selectSql"/>
+	    <include refid="where_name_email"/>
+	</select>
+	<select id="selectAllStudentByMap" parameterType="map" resultMap="StudentGenderResult">
+	    <include refid="selectSql"/>
+	    <include refid="where_name_email"/>
+	</select> 
+
+	<!-- ResultSet 처리방식의 재정의 -->
+	<select id="selectStudentForMap" parameterType="int" resultMap="StudentGenderResult">
+    	<include refid="selectSql"/>
+    	<include refid="whereSql"/>
+	</select>
+	
 </mapper>
