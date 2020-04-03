@@ -169,8 +169,8 @@ public class StudentMapperTest extends AbstractTest{
         int res1 = dao.insertEnumStudent(student);
         Assert.assertEquals(1, res1);
         log.debug(student.toString());
-/*      studentService.deleteStudent(3);
-        studentService.deleteStudent(4);*/
+        dao.deleteStudent(3);
+        dao.deleteStudent(4);
     }
 
 }
