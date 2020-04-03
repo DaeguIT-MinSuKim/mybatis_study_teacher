@@ -2,9 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis_study_teacher.mappers.UserPicMapper">
 	<insert id="insertUserPic" parameterType="UserPic">
-		insert into
-		user_pics(id, name, pic, bio)
-		values (#{id}, #{name}, #{pic}, #{bio})
+		insert into	user_pics(name, pic, bio)
+		values (#{name}, #{pic}, #{bio})
 	</insert>
 
 	<select id="getUserPic" parameterType="int" resultType="UserPic">
