@@ -20,7 +20,6 @@ public class TutorMapperImpl implements TutorMapper {
 		this.sqlSession = sqlSession;
 	}
 
-	
 	@Override
 	public Tutor selectTutorByTutorId(Tutor tutor) {
 		return sqlSession.selectOne(namespace + ".selectTutorByTutorId", tutor);

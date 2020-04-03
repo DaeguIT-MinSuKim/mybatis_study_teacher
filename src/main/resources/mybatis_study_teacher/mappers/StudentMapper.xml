@@ -89,4 +89,8 @@
       <include refid="whereSql"/>
    </select>
 	
+	<insert id="insertEnumStudent" parameterType="Student">
+		insert into students(stud_id, name, email,phone, dob, gender) 
+    	values(#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})
+	</insert>
 </mapper>
