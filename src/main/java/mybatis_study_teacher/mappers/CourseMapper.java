@@ -10,5 +10,8 @@ public interface CourseMapper {
 	List<Course> selectCaseCourses(Map<String, Object> map);
 	List<Course> selectWhereCourses(Map<String, Object> map);
 	List<Course> selectTrimCourses(Map<String, Object> map);
+	/* foreach */
+	List<Course> selectCoursesForeachByTutors(Map<String, Object> map);
+	int insertCourses(Map<String, Object> map);
 
 }

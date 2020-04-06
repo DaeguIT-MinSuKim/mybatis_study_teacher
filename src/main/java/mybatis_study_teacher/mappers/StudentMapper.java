@@ -34,7 +34,6 @@ public interface StudentMapper {
 
 	/* ResultSet 처리방식의 재정의 */
 	Map<Integer, Student> selectStudentForMap(Student student);
-
 }
 
 
