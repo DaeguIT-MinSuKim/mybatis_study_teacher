@@ -23,7 +23,6 @@ public class CourseMapperImpl implements CourseMapper {
 		this.sqlSession = sqlSession;
 	}
 
-	
 	@Override
 	public List<Course> selectCoursesByCondition(Map<String, Object> map) {
 		return sqlSession.selectList(namespace + ".selectCoursesByCondition", map);

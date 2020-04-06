@@ -29,6 +29,23 @@
 	        </if>
     	</where>
 	</sql>
+	<sql id="whereSqlCDATA">
+		<where>
+	        <if test="tutorId != null">
+	            <![CDATA[ and tutor_id = #{tutorId}]]>
+	        </if>
+	        <if test="courseName != null">
+	            <![CDATA[ and name like #{courseName}]]>
+	        </if>
+	        <if test="startDate != null">
+	            <![CDATA[ and start_date >= #{startDate}]]>
+	        </if>
+	        <if test="endDate != null">
+	            <![CDATA[ and end_date <= #{endDate}]]>
+	        </if>
+	         
+    	</where>
+	</sql>
 	
 	<select id="selectCoursesByCondition" parameterType="map" resultMap="CourseResult">
 		<include refid="selectSql"/>
@@ -52,6 +69,6 @@
 	
 	<select id="selectWhereCourses" parameterType="map" resultMap="CourseResult">
 		<include refid="selectSql"/>
-		<include refid="whereSql"/>
+		<include refid="whereSqlCDATA"/>
 	</select>
 </mapper>
