@@ -100,5 +100,10 @@ public class StudentMapperImpl implements StudentMapper {
 	    return map;
 	}
 
+	@Override
+	public int updateSetStudent(Student student) {
+		return sqlSession.update(namespace + ".updateSetStudent", student);
+	}
+
 
 }
