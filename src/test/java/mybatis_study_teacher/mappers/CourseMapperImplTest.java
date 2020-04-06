@@ -1,6 +1,7 @@
 package mybatis_study_teacher.mappers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -204,4 +205,14 @@ public class CourseMapperImplTest extends AbstractTest {
 		return course;
 	}
 
+	@Test
+	public void test09DeleteCourses() {
+	    List<Integer> courseIds = Arrays.asList(4, 5, 6);
+	        
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("courseIds", courseIds);
+	        
+	    int res = dao.deleteCourses(map);
+	    Assert.assertEquals(3, res);
+	}
 }

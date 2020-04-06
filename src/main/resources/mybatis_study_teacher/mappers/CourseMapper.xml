@@ -105,4 +105,13 @@
 	   </foreach>
 	</insert>
 	
+	<delete id="deleteCourses" parameterType="map">
+		delete from courses
+		<where>
+            course_id IN
+            <foreach item="courseId" collection="courseIds" index="index" open="(" close=")" separator=",">
+                    #{courseId}
+            </foreach>
+		</where>
+	</delete>
 </mapper>

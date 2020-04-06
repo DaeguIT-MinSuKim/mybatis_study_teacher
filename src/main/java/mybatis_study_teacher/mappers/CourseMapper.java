@@ -13,5 +13,5 @@ public interface CourseMapper {
 	/* foreach */
 	List<Course> selectCoursesForeachByTutors(Map<String, Object> map);
 	int insertCourses(Map<String, Object> map);
-
+	int deleteCourses(Map<String, Object> map);
 }

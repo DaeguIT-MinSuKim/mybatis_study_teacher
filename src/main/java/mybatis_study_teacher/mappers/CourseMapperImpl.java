@@ -53,4 +53,9 @@ public class CourseMapperImpl implements CourseMapper {
 		return sqlSession.insert(namespace + ".insertCourses", map);
 	}
 
+	@Override
+	public int deleteCourses(Map<String, Object> map) {
+		return sqlSession.delete(namespace + ".deleteCourses", map);
+	}
+
 }

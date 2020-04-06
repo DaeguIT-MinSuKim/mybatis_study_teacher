@@ -18,7 +18,7 @@
 	<select id="selectStudentByNo" parameterType="Student" resultType="Student">
 		<include refid="selectSql"/>
 		<include refid="whereSql"/>
-<!-- 		select stud_id as studId, name, email, dob, phone
+<!-- 	select stud_id as studId, name, email, dob, phone
 		  from students
 		 where stud_id=#{studId} -->
 	</select>
