@@ -38,4 +38,9 @@ public class CourseMapperImpl implements CourseMapper {
 		return sqlSession.selectList(namespace + ".selectWhereCourses", map);
 	}
 
+	@Override
+	public List<Course> selectTrimCourses(Map<String, Object> map) {
+		return sqlSession.selectList(namespace + ".selectTrimCourses", map);
+	}
+
 }

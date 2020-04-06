@@ -9,4 +9,6 @@ public interface CourseMapper {
 	List<Course> selectCoursesByCondition(Map<String, Object> map);
 	List<Course> selectCaseCourses(Map<String, Object> map);
 	List<Course> selectWhereCourses(Map<String, Object> map);
+	List<Course> selectTrimCourses(Map<String, Object> map);
+
 }

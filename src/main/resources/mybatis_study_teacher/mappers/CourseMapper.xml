@@ -71,4 +71,19 @@
 		<include refid="selectSql"/>
 		<include refid="whereSqlCDATA"/>
 	</select>
+	
+	<select id="selectTrimCourses" parameterType="map" resultMap="CourseResult">
+	    <include refid="selectSql"/>
+	    <trim prefix="WHERE" prefixOverrides="AND|OR">
+			<!-- 아래 tutordId != null 조건이 참이면 앞부분에 where 자동 추가 -->
+	        <if test="tutorId != null"> 
+	            tutor_id=#{tutorId}
+	        </if>
+			<!-- 만약 where가 추가 된 경우 and 절 추가, where 존재하지 않는 경우 where 추가하고 and 제거-->
+	        <if test="courseName != null">
+	            and name like #{courseName}
+	        </if>
+	    </trim>
+	</select>
+	
 </mapper>
