@@ -86,4 +86,23 @@
 	    </trim>
 	</select>
 	
+	<select id="selectCoursesForeachByTutors" parameterType="map" resultMap="CourseResult">
+	    <include refid="selectSql"/>
+	    <if test="tutorIds != null">
+	        <where>
+	            tutor_id IN
+	            <foreach item="tutorId" collection="tutorIds" index="index" open="(" close=")" separator=",">
+	                    #{tutorId}
+	            </foreach>
+	        </where>
+	    </if>
+	</select>
+	
+	<insert id="insertCourses" parameterType="map">
+	   insert into courses(course_id, name, description, start_date, end_date, tutor_id) values 
+	   <foreach item="item" collection="tutors" separator=" ," index="index">
+	      (#{item.courseId}, #{item.name}, #{item.description}, #{item.startDate}, #{item.endDate}, #{item.tutorId})
+	   </foreach>
+	</insert>
+	
 </mapper>

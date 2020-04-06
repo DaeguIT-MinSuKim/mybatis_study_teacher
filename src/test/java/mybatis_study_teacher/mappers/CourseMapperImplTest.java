@@ -1,5 +1,6 @@
 package mybatis_study_teacher.mappers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -156,6 +157,51 @@ public class CourseMapperImplTest extends AbstractTest {
 	    for(Course c : courses) {
 	        log.trace(c.toString());
 	    }
+	}
+
+	@Test
+	public void test07SelectCoursesForeachByTutors() {
+	    log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+	    List<Integer> tutorIds = new ArrayList<Integer>();
+	    tutorIds.add(1);
+	    tutorIds.add(2);
+	        
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("tutorIds", tutorIds);
+	        
+	    List<Course> courses = dao.selectCoursesForeachByTutors(map);
+	    Assert.assertNotNull(courses);
+	        
+	    for(Course c : courses) {
+	        log.trace(c.toString());
+	    }
+	}
+
+	@Test
+	public void test08insertCourses() {
+	    List<Course> tutors = new ArrayList<Course>();
+	    
+	    tutors.add(getCourse(4, "mysql", "database", new Date(), new Date(), 3));
+	    tutors.add(getCourse(5, "mssql", "database", new Date(), new Date(), 3));
+	    tutors.add(getCourse(6, "mariaDb", "database", new Date(), new Date(), 4));
+	        
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("tutors", tutors);
+	        
+	    int res = dao.insertCourses(map);
+	    Assert.assertEquals(3, res);
+	}
+
+	private Course getCourse(int courseId, String name, String description, Date startDate, Date endDate, int tutorId) {
+		Course course =  new Course();
+		course.setCourseId(courseId);
+		course.setName(name);
+		course.setDescription(description);
+		course.setStartDate(startDate);
+		course.setEndDate(endDate);
+		course.setTutorId(tutorId);
+		return course;
 	}
 
 }
