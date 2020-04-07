@@ -20,7 +20,7 @@ public class TutorMapperImplTest extends AbstractTest {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         dao = TutorMapperImpl.getInstance();
-        sqlSession = MyBatisSqlSessionFactory.openSession();
+        sqlSession = MyBatisSqlSessionFactory.openSession(true);
         dao.setSqlSession(sqlSession);
     }
 

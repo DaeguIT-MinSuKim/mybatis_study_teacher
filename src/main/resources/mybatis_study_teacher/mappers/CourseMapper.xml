@@ -114,4 +114,30 @@
             </foreach>
 		</where>
 	</delete>
+	
+	<!-- procedure -->
+	<parameterMap id="paramMap" type="map" >
+	    <parameter property="tutor_id" mode="IN" jdbcType="INTEGER" />
+	</parameterMap>
+	
+	<select id="getCourseCountByTutor" statementType="CALLABLE" parameterMap="paramMap" resultType="CourseStat">
+	    { call course_total(?) }
+	</select>
+	
+	<select id="getCourseCountByTutor2" statementType="CALLABLE" parameterType="map" resultType="CourseStat">
+	    { call course_total(#{tutor_id, mode=IN, jdbcType=INTEGER}) }
+	</select>
+	
+	<select id="getCourseCountByTutor3"  statementType="CALLABLE" resultType="CourseStat">
+	    { call course_total(#{param1, mode=IN, jdbcType=INTEGER}) }
+	</select>
+	
+	<insert id="insertCourse" parameterType="Course">
+		insert into courses(course_id, name, description, start_date, end_date, tutor_id) 
+		values (#{courseId}, #{name}, #{description}, #{startDate}, #{endDate}, #{tutorId})
+	</insert>
+	
+	<delete id="deleteCourse" parameterType="int">
+		delete from courses where course_id = #{courseId}
+	</delete>
 </mapper>

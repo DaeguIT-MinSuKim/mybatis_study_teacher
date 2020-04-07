@@ -9,6 +9,7 @@ select course_id , name , description , start_date , end_date , tutor_id  from c
 select * from course_enrollment;
 select * from user_pics up ;
 
+
 -- studentMapper sql
 
 select stud_id as studId, name, email, dob, phone

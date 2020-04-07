@@ -30,7 +30,7 @@ public class StudentMapperTest extends AbstractTest{
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         dao = StudentMapperImpl.getInstance();
-        sqlSession = MyBatisSqlSessionFactory.openSession();
+        sqlSession = MyBatisSqlSessionFactory.openSession(true);
         dao.setSqlSession(sqlSession);
     }
 
