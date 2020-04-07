@@ -25,3 +25,18 @@ INSERT INTO COURSE_ENROLLMENT (COURSE_ID,STUD_ID) VALUES
  (1,1),
  (1,2),
  (2,2);
+
+
+DROP PROCEDURE IF EXISTS mybatis_study.course_total;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE mybatis_study.course_total(in tutor_id int)
+BEGIN
+    select t.name as tutor, ifnull(count(c.name),0) as total
+    from tutors t left join courses c on t.tutor_id = c.tutor_id
+    where t.tutor_id = tutor_id;
+END$$
+DELIMITER ;
+
+call mybatis_study.course_total(1);

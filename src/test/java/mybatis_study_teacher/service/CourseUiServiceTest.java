@@ -4,12 +4,15 @@ import java.util.Date;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import mybatis_study_teacher.AbstractTest;
 import mybatis_study_teacher.dto.Course;
 import mybatis_study_teacher.dto.Tutor;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CourseUiServiceTest extends AbstractTest{
 	private static CourseUiService service;
 	
@@ -42,7 +45,7 @@ public class CourseUiServiceTest extends AbstractTest{
         tutor.setName("kim");
         tutor.setEmail("test@test.co.kr");
     
-        Course course = getCourse(8, "Python", "Programming", new Date(), new Date(), 4);    
+        Course course = getCourse(8, "Python", "Programming", new Date(), new Date(), 4);
         service.joinNewTutorAndCourse(tutor, course);
     }
 
@@ -50,11 +53,11 @@ public class CourseUiServiceTest extends AbstractTest{
     public void test2JoinNewTutorAndCourseFailCourse() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         Tutor tutor = new Tutor();
-        tutor.setTutorId(6);
+        tutor.setTutorId(7);
         tutor.setName("kim");
         tutor.setEmail("test@test.co.kr");
     
-        Course course = getCourse(2, "Python", "Programming", new Date(), new Date(), 4);
+        Course course = getCourse(2, "Python", "Programming", new Date(), new Date(), 7);
     
         service.joinNewTutorAndCourse(tutor, course);
     }
@@ -63,11 +66,11 @@ public class CourseUiServiceTest extends AbstractTest{
     public void test3JoinNewTutorAndCourseSuccess() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
         Tutor tutor = new Tutor();
-        tutor.setTutorId(6);
+        tutor.setTutorId(7);
         tutor.setName("kim");
         tutor.setEmail("test@test.co.kr");
     
-        Course course = getCourse(8, "Python", "Programming", new Date(), new Date(), 6);
+        Course course = getCourse(8, "Python", "Programming", new Date(), new Date(), 7);
     
         service.joinNewTutorAndCourse(tutor, course);
     }	
@@ -81,13 +84,13 @@ public class CourseUiServiceTest extends AbstractTest{
     @Test(expected=RuntimeException.class)
     public void test5RemoveTutorAndCourseFailCourse() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-        service.removeTutorAndCourse(6, 10);
+        service.removeTutorAndCourse(7, 10);
     }
 
     @Test
     public void test6RemoveTutorAndCourseSuccess() {
         log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-        service.removeTutorAndCourse(6, 8);
+        service.removeTutorAndCourse(7, 8);
     }
 
 }

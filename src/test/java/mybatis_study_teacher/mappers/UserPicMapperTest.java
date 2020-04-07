@@ -27,7 +27,7 @@ public class UserPicMapperTest extends AbstractTest{
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         dao = UserPicMapperImpl.getInstance();
-        sqlSession = MyBatisSqlSessionFactory.openSession();
+        sqlSession = MyBatisSqlSessionFactory.openSession(true);
         dao.setSqlSession(sqlSession);
     }
 
